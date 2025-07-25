@@ -23,7 +23,8 @@ const sendConfirmationEmail = async (user, paymentLink) => {
   };
 
   try {
-    await sgMailKey.send(msg);
+    const mssg = await sgMailKey.send(msg);
+    console.log(mssg);
     console.log("Confirmation email sent to", user.email);
   } catch (error) {
     console.error("SendGrid Error:", error.response?.body || error.message);
