@@ -16,6 +16,7 @@ app.use(express.json({ type: "application/json" }));
 
 app.use("/api/cohort", cohortRoute);
 app.use("/api/webhook/sendgrid", emailWebHookRoute);
+app.use("/payment", require("./routes/paymentRoutes"));
 
 connectToMongoDb(MONGO_URI).then(() => console.log("Connect mongoDB"));
 
