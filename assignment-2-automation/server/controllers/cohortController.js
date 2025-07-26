@@ -16,7 +16,7 @@ const submitCohortForm = async (req, res) => {
     });
 
     // Send confirmation email with dummy payment link
-    const paymentLink = `https://d2683ed3d8b0.ngrok-free.app/payment/success?userId=${newCohortSubmission._id}`;
+    const paymentLink = `https://490e43736aca.ngrok-free.app/payment/success?userId=${newCohortSubmission._id}`;
 
     sendConfirmationEmail(newCohortSubmission, paymentLink);
 

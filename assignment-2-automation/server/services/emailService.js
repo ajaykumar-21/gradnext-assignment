@@ -23,8 +23,7 @@ const sendConfirmationEmail = async (user, paymentLink) => {
   };
 
   try {
-    const mssg = await sgMailKey.send(msg);
-    console.log(mssg);
+    await sgMailKey.send(msg);
     console.log("Confirmation email sent to", user.email);
   } catch (error) {
     console.error("SendGrid Error:", error.response?.body || error.message);
@@ -32,6 +31,36 @@ const sendConfirmationEmail = async (user, paymentLink) => {
   }
 };
 
+const sendReminderEmail1 = async (user) => {
+  await sgMailKey.send({
+    to: user.email,
+    from: emailId,
+    subject: "👋 Reminder: Your seat is waiting!",
+    html: `<p>Hi ${user.name},</p><p>We noticed you haven’t opened our email yet. Don’t miss out on the Consulting Cohort 101 program!</p>`,
+  });
+};
+
+const sendReminderEmail2 = async (user) => {
+  await sgMailKey.send({
+    to: user.email,
+    from: emailId,
+    subject: "📢 More benefits just for you!",
+    html: `<p>Hey ${user.name},</p><p>Still not sure? Here are more reasons to join the program... [add benefits here]</p>`,
+  });
+};
+
+const sendFinalReminder = async (user) => {
+  await sgMailKey.send({
+    to: user.email,
+    from: emailId,
+    subject: "⚠️ Last chance to confirm your seat!",
+    html: `<p>Hi ${user.name},</p><p>This is your final reminder to complete your payment and secure your spot.</p>`,
+  });
+};
+
 module.exports = {
   sendConfirmationEmail,
+  sendReminderEmail1,
+  sendReminderEmail2,
+  sendFinalReminder,
 };
