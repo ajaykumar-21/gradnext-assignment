@@ -8,7 +8,12 @@ dotenv.config({ quiet: true });
 const PORT = process.env.PORT || 8000;
 const MONGO_URI = process.env.MONGO_URI;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://gradnext-automation.vercel.app"],
+    credentials: true,
+  })
+);
 
 const {
   scheduleFollowUps,
