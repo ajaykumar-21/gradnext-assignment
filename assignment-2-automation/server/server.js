@@ -20,12 +20,15 @@ const { connectToMongoDb } = require("./config/connection");
 const cohortRoute = require("./routes/cohortRoutes");
 const emailWebHookRoute = require("./routes/emailWebhookRoutes");
 const paymentRoute = require("./routes/paymentRoutes");
+const submissionRoute = require("./routes/submissionRoutes");
+
 // Middleware
 app.use(express.json({ type: "application/json" }));
 
 app.use("/api/cohort", cohortRoute);
 app.use("/api/webhook/sendgrid", emailWebHookRoute);
 app.use("/payment", paymentRoute);
+app.use("/api", submissionRoute);
 
 connectToMongoDb(MONGO_URI).then(() => console.log("Connect mongoDB"));
 
