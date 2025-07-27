@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
 import Features from "./sections/Features";
+import CohortForm from "./sections/CohortForm";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <Hero />
       <Features />
+      <CohortForm />
     </div>
   );
 }
