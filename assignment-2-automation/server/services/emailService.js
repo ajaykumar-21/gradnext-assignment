@@ -7,6 +7,7 @@ const sgMailKey = sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const emailId = process.env.FROM_EMAIL;
 
 const sendConfirmationEmail = async (user, paymentLink) => {
+  console.log(paymentLink);
   const msg = {
     to: user.email,
     from: emailId,
@@ -15,7 +16,7 @@ const sendConfirmationEmail = async (user, paymentLink) => {
       <p>Hi ${user.name},</p>
       <p>We're excited to have you in the <strong>Consulting Cohort 101</strong> program at GradNext!</p>
       <p>Please confirm your spot by making a payment:</p>
-      <a href="${paymentLink}" style="padding: 10px 15px; background: #007bff; color: white; border-radius: 4px; text-decoration: none;">Complete Payment</a>
+      <a href="${paymentLink}" alt="Click to pay" style="padding: 10px 15px; background: #007bff; color: white; border-radius: 4px; text-decoration: none;">Complete Payment</a>
       <p>If you have questions, just reply to this email.</p>
       <br/>
       <p>Cheers,<br/>Team GradNext</p>
