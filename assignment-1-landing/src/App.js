@@ -4,6 +4,7 @@ import Hero from "./sections/Hero";
 import Features from "./sections/Features";
 import CohortForm from "./sections/CohortForm";
 import Testimonials from "./sections/Testimonials";
+import Footer from "./sections/Footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Features />
       <CohortForm />
       <Testimonials />
+      <Footer />
     </div>
   );
 }

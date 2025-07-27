@@ -3,7 +3,7 @@ import { useState } from "react";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = ["Home", "Features", "Testimonials", "CTA"];
+  const navLinks = ["Home", "Features", "Testimonials", "Join Now"];
 
   return (
     <nav className="bg-white sticky top-0">
