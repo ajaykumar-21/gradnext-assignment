@@ -1,72 +1,102 @@
-# GradNext - Automation of Cohort Enrollment 💼📩
+# 🚀 GradNext Full-Stack Assignments
 
-This project implements an automated workflow for cohort enrollment for GradNext's Consulting Cohort 101 program. It automates follow-up emails based on user behavior and simulates real-world enrollment logic including email tracking, payment simulation, and user journey visualization.
+This repository includes two full-stack assignments for GradNext:
 
----
-
-## 📦 Tech Stack
-
-**Backend**: Node.js, Express, MongoDB Atlas  
-**Email Service**: SendGrid  
-**Scheduler**: node-cron  
-**Deployment**: Render (backend), Vercel (admin dashboard - optional)  
-**Frontend (Admin Dashboard)**: React, Tailwind CSS
+1. ✅ **Assignment 1:** Responsive GradNext Landing Page
+2. ✅ **Assignment 2:** Automation of Cohort Enrollment Workflow
 
 ---
 
-## ✨ Features Implemented
+## 📌 Assignment 1 – GradNext Landing Page 🌐
+
+A modern, responsive landing page for GradNext, featuring:
+
+### ✨ Features
+
+- 🖼️ Hero Section
+- ✅ Features / Benefits section
+- 🗣️ Static Testimonials section
+- 🔔 Call-to-Action (CTA) banner
+- 📬 Footer with links and contact info
+- 📱 Fully Responsive (Mobile, Tablet, Desktop)
+- 🧾 Optional Cohort Form (connected to Assignment 2 backend)
+
+### 🧰 Tech Stack
+
+- Frontend: React.js, Tailwind CSS
+- Hosting: Vercel
+
+### 🌍 Live Demo
+
+- **Landing Page:**
+(https://gradnext-landing-page.vercel.app/)
+
+---
+
+## 📌 Assignment 2 – Automation of Cohort Enrollment 💼📩
+
+An automated backend workflow for managing cohort interest, email follow-ups, and payment simulation.
+
+### ✨ Features Implemented
 
 - 📋 Cohort interest form submission (name, email, phone)
-- 📧 Automatic selection email with dummy payment link
-- 🔍 Email tracking (open, click)
-- 🔁 Follow-up email logic based on behavior:
+- 📧 Automatic selection email with dynamic payment link
+- 🔍 Email tracking via SendGrid webhook:
+  - Open status
+  - Link click
+- 🔁 Follow-up email logic:
   - Unopened after 2 days → Reminder 1
   - Opened but not clicked → Reminder 2
   - Clicked but not paid after 2 days → Final Reminder
-- ✅ Stop follow-ups on payment
-- ⚡ Simulated payment confirmation via a webhook-style route
-- 📊 Admin dashboard to view all users & their statuses
-- 🌐 Fully deployed backend for public access
+- ✅ Stop communication if payment is completed
+- 💳 Simulated Payment Screen (Pay / Cancel)
+- 🔔 Webhook confirmation route to update payment status
+- 📊 Admin Dashboard:
+  - View all users and their statuses (opened, clicked, paid)
+  - Live data synced with backend
+- 🌐 Deployed and publicly accessible
 
 ---
 
-## 🚀 Live Demo
+## 📦 Tech Stack (Assignment 2)
 
-- **Backend API**: [https://cohort-backend.onrender.com](https://cohort-backend.onrender.com)
-- **Frontend Admin Dashboard**: _[add Vercel link here]_ (optional)
-
----
-
-## 📁 Folder Structure
-
-/backend
-├── server.js
-├── models/
-├── routes/
-├── services/
-├── cron/
-├── webhooks/
-└── .env.example
+- Backend: Node.js, Express
+- Database: MongoDB Atlas
+- Email Service: SendGrid (SMTP + Webhook)
+- Scheduler: node-cron
+- Frontend (Admin): React + Tailwind CSS
+- Deployment: Render (Backend), Vercel (Frontend)
 
 ---
 
-## 🧪 How to Test
+## 🧪 Testing Instructions
 
-1. **Submit a cohort form** (or call `/api/cohort/submit` manually)
-2. You’ll receive an email with a **payment link**
-3. Open/click it — webhook will update database
-4. Use `/payment/success?userId=...` to simulate a successful payment
-5. Cron job (manual or daily) triggers follow-up logic
-6. Check the **admin dashboard** to see real-time updates
+### ✅ Automation Workflow
 
----
+1. Submit the cohort form or trigger `POST /api/cohort/submit` with:
 
-## ⚙️ Local Setup
+```json
+{
+  "name": "Ajay",
+  "email": "ajay@example.com",
+  "phone": "9876543210"
+}
 
-1. Clone the repo
-2. Install dependencies:
 
-```bash
-cd backend
-npm install
+2. Check your inbox for the selection email
+
+3. Click the payment link → simulates interaction
+
+4. Complete payment via /payment/success?userId=...
+
+5. Cron job handles scheduled follow-ups based on user activity
+
+6. Visit the Admin Dashboard to see status updates
+
+
+🔗 Live Links
+Type	URL
+🧑‍💻 Landing Page - https://gradnext-landing-page.vercel.app/
+📊 Admin Dashboard - https://gradnext-automation.vercel.app/
+⚙️ Backend API - https://gradnext-assignment.onrender.com
 ```
