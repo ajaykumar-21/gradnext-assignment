@@ -16,7 +16,7 @@ const submitCohortForm = async (req, res) => {
     });
 
     // Send confirmation email with dummy payment link
-    const paymentLink = `https://80fe32f6e8ad.ngrok-free.app/payment?userId=${newCohortSubmission._id}`;
+    const paymentLink = `https://gradnext-assignment.onrender.com/payment?userId=${newCohortSubmission._id}`;
 
     sendConfirmationEmail(newCohortSubmission, paymentLink);
 
