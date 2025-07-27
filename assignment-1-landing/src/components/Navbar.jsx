@@ -6,12 +6,12 @@ const Navbar = () => {
   const navLinks = ["Home", "Features", "Testimonials", "CTA"];
 
   return (
-    <nav className="bg-white shadow sticky top-0 z-50">
+    <nav className="bg-white sticky top-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+        <h1 className="text-2xl font-extrabold  text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
           GradNext
         </h1>
-        <ul className="hidden md:flex space-x-6 font-medium text-gray-600">
+        <ul className="hidden md:flex space-x-8 font-semibold  text-gray-700 text-lg">
           {navLinks.map((link) => (
             <li key={link}>
               <a
@@ -25,7 +25,7 @@ const Navbar = () => {
         </ul>
         <div className="md:hidden">
           <button
-            className="text-gray-700 focus:outline-none text-2xl"
+            className="text-gray-700 focus:outline-none text-3xl"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? "✖" : "☰"}
@@ -34,7 +34,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <ul className="md:hidden px-4 pb-4 space-y-2 bg-white text-gray-600">
+        <ul className="md:hidden px-4 pb-4 space-y-2 bg-white text-gray-700 font-semibold text-lg">
           {navLinks.map((link) => (
             <li key={link}>
               <a
