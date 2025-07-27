@@ -19,6 +19,7 @@ function App() {
       });
   }, []);
 
+  // If data is still loading, show a centered loading spinner with a message
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen gap-4">

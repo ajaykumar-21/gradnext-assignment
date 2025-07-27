@@ -6,8 +6,9 @@ dotenv.config({ quiet: true });
 const sgMailKey = sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const emailId = process.env.FROM_EMAIL;
 
+// Sends the initial confirmation email to selected users with a dynamic payment link.
 const sendConfirmationEmail = async (user, paymentLink) => {
-  console.log(paymentLink);
+  // console.log(paymentLink);
   const msg = {
     to: user.email,
     from: emailId,
@@ -32,6 +33,7 @@ const sendConfirmationEmail = async (user, paymentLink) => {
   }
 };
 
+//Sends the first reminder email if the user hasn't opened the confirmation email.
 const sendReminderEmail1 = async (user) => {
   await sgMailKey.send({
     to: user.email,
@@ -41,6 +43,7 @@ const sendReminderEmail1 = async (user) => {
   });
 };
 
+// Sends the second reminder email highlighting more benefits.
 const sendReminderEmail2 = async (user) => {
   await sgMailKey.send({
     to: user.email,
@@ -50,6 +53,7 @@ const sendReminderEmail2 = async (user) => {
   });
 };
 
+//Sends a final reminder email before closing the opportunity.
 const sendFinalReminder = async (user) => {
   await sgMailKey.send({
     to: user.email,
@@ -59,6 +63,7 @@ const sendFinalReminder = async (user) => {
   });
 };
 
+// Export all email functions to use in other parts of the app
 module.exports = {
   sendConfirmationEmail,
   sendReminderEmail1,

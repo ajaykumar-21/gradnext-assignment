@@ -6,7 +6,7 @@ const {
   sendFinalReminder,
 } = require("../services/emailService");
 
-const MS_IN_A_DAY = 24 * 60 * 60 * 1000;
+const MS_IN_A_DAY = 24 * 60 * 60 * 1000; // This constant represents the number of milliseconds in one day:
 
 const runFollowUpCheck = async () => {
   console.log("📅 Running daily follow-up scheduler...");

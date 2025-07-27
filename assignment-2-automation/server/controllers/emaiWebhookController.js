@@ -2,7 +2,7 @@ const CohortSubmission = require("../models/CohortSubmission");
 
 const handleSendGridWebhook = async (req, res) => {
   const events = req.body;
-  console.log(events);
+  // console.log(events);
 
   try {
     for (let event of events) {

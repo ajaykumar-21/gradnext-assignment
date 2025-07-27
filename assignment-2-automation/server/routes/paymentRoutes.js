@@ -2,6 +2,7 @@ const express = require("express");
 const CohortSubmission = require("../models/CohortSubmission");
 const router = express.Router();
 
+// GET route to confirm and simulate payment process
 router.get("/", async (req, res) => {
   const { userId } = req.query;
 
@@ -9,11 +10,13 @@ router.get("/", async (req, res) => {
     return res.status(400).send("Missing userId");
   }
 
+  // Fetch the user submission using the userId
   const user = await CohortSubmission.findById(userId);
   if (!user) {
     return res.status(404).send("User not found");
   }
 
+  // If user has already completed the payment
   if (user.paymentComplete) {
     // Already paid – show success message directly
     return res.send(`
@@ -26,6 +29,7 @@ router.get("/", async (req, res) => {
     `);
   }
 
+  // Otherwise, show a simple HTML page with confirmation buttons
   res.send(`
     <html>
       <head>
@@ -47,11 +51,13 @@ router.get("/", async (req, res) => {
   `);
 });
 
+// GET route to simulate a successful payment
 router.get("/success", async (req, res) => {
   const { userId } = req.query;
 
   if (!userId) return res.status(400).send("Missing userId");
 
+  // Update user's payment status to true in the database
   await CohortSubmission.findByIdAndUpdate(userId, {
     paymentComplete: true,
   });
