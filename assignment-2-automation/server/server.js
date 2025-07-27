@@ -10,7 +10,11 @@ const MONGO_URI = process.env.MONGO_URI;
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://gradnext-automation.vercel.app"],
+    origin: [
+      "http://localhost:3000",
+      "https://gradnext-automation.vercel.app",
+      "https://gradnext-landing-page.vercel.app",
+    ],
     credentials: true,
   })
 );
