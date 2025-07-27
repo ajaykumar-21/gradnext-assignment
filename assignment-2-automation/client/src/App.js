@@ -4,13 +4,29 @@ import axios from "axios";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("https://gradnext-assignment.onrender.com/api/submissions")
-      .then((res) => setUsers(res.data))
-      .catch((err) => console.error("Failed to fetch:", err));
+      .then((res) => {
+        setUsers(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch:", err);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen gap-4">
+        <div className="w-6 h-6 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-orange-600 text-lg">Loading submissions...</p>
+      </div>
+    );
+  }
 
   // console.log(users);
   return (
@@ -31,6 +47,12 @@ function App() {
               <th className="p-3">Submitted</th>
             </tr>
           </thead>
+          {loading && (
+            <div className="flex justify-center items-center h-screen gap-4">
+              <div className="w-6 h-6 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-orange-600 text-lg">Loading submissions...</p>
+            </div>
+          )}
           <tbody>
             {users &&
               users.map((user) => (
